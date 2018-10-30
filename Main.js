@@ -31,24 +31,27 @@ function initTable(){
 }
 function setAttributesNS(elem, attrs){ // call element.setAttributeNS in bulk
 	var x;
-	for (x in attrs){
-		elem.setAttributeNS(null, x, attrs[x]);
+	for (x=0; x<Object.keys(attrs).length; x++){
+		elem.setAttributeNS(null, Object.keys(attrs)[x], attrs[Object.keys(attrs)[x]]);
 	}
 	return elem;
 }
 function viewElement(e){ // Using ths function costs you $11.99 (The price of a plate of spaghetii)
 	var svg, // The atom diagram thing
 		w, h, // Width and height of the diagram
-		n, d, // Generic iteration variables
+		n, d, x, // Generic iteration variables
 		txt, txtAttrs, // The atomic symbol in the diagram and its attributes
 		ring, ringAttrs, // Electron shells
 		elec, elecAttrs, // Electrons
 		angle, // The angle of each electron in a shell
 		ions, // The ions of the element
-		span; // Each number in the ion list is its own span element
+		span, // Each number in the ion list is its own span element
+		elem; // I can't use for (x of elems) in IE, so I need to do for (x=0; x<elems.length; x++){elem=elems[x]}
 	e=elems[e]; // You may think this is stupid, but due to how I had to set the onclick functions, this is the only not-shit way to do it.
 	svg=document.getElementById("diagram");
-	svg.innerHTML="";
+	while (svg.firstChild) {
+		svg.removeChild(svg.firstChild);
+	}
 	// Width and height of diagram (Right now, they're constant, but they might change later)
 	w=parseInt(svg.getAttribute("width"));
 	h=parseInt(svg.getAttribute("height"));
@@ -69,17 +72,19 @@ function viewElement(e){ // Using ths function costs you $11.99 (The price of a 
 		}
 	}
 	// Set the data under the diagram
-	for (x of document.getElementsByClassName("view")){
-		x.innerHTML=e[x.id.split("_")[1]];
+	for (x=0; x<document.getElementsByClassName("view").length; x++){
+		elem=document.getElementsByClassName("view")[x];
+		elem.innerHTML=e[elem.id.split("_")[1]];
+		console.log(e[elem.id.split("_")[1]])
 	}
 	// 100% jank method of listing ions with the common ones in blue
 	ions=document.getElementById("view_ions");
 	ions.innerHTML="";
-	for (n of e.ions[0]){
+	for (x=0; x<e.ions[0].length; x++){
 		span=document.createElement("span");
-		span.innerHTML=n;
+		span.innerHTML=e.ions[0][x];
 		// e.ions[0]=all ions, e.ions[1]=common ions
-		if (e.ions[1].indexOf(n)!=-1){span.style.color="blue";}
+		if (e.ions[1].indexOf(e.ions[0][x])!=-1){span.style.color="blue";}
 		ions.appendChild(span);
 		ions.innerHTML+=",";
 	}
