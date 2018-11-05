@@ -20,7 +20,7 @@ function initTable(){
 	}
 	for (x=1; x<=18; x++){table.childNodes[0].childNodes[x].innerHTML=x;} // Add the period labels at the top
 	for (y=1; y<=7; y++){table.childNodes[y].childNodes[0].innerHTML=y;} // Add the group labels on the left
-	document.getElementById("main").appendChild(table);
+	document.getElementById("tableCont").appendChild(table);
 	for (n in elems){ // Set table cell symbol and add the onclick event
 		e=table.childNodes[elems[n]["ypos"]].childNodes[elems[n]["xpos"]];
 		e.innerHTML=elems[n].symbol;
@@ -31,12 +31,12 @@ function initTable(){
 }
 function setAttributesNS(elem, attrs){ // call element.setAttributeNS in bulk
 	var x;
-	for (x=0; x<Object.keys(attrs).length; x++){
-		elem.setAttributeNS(null, Object.keys(attrs)[x], attrs[Object.keys(attrs)[x]]);
+	for (x in attrs){
+		elem.setAttributeNS(null, x, attrs[x]);
 	}
 	return elem;
 }
-function viewElement(e){ // Using ths function costs you $11.99 (The price of a plate of spaghetii)
+function viewElement(e){ // Using this function costs you $11.99 (The price of a plate of spaghetti)
 	var svg, // The atom diagram thing
 		w, h, // Width and height of the diagram
 		n, d, x, // Generic iteration variables
@@ -56,17 +56,18 @@ function viewElement(e){ // Using ths function costs you $11.99 (The price of a 
 	w=parseInt(svg.getAttribute("width"));
 	h=parseInt(svg.getAttribute("height"));
 	// Adds the chemical symbol to the diagram.
-	txtAttrs={"x":w/2, "y":h/2+4, "style":"text-anchor:middle; font-size:16px;"};
+	txtAttrs={"x":"50%", "y":"50%", "style":"text-anchor:middle; font-size:16px; transform:translate(0,0.25em)"};
 	txt=setAttributesNS(document.createElementNS("http://www.w3.org/2000/svg", "text"), txtAttrs);
 	txt.innerHTML=e.symbol;
 	svg.appendChild(txt);
 	for (n=0; n<e.shells.length; n++){ // The shell loop.
-		ringAttrs={"cx":w/2, "cy":h/2, "r":(n+1)*25, "style":"stroke: black; stroke-width:1px; fill:none;"};
+		ringAttrs={"cx":"50%", "cy":"50%", "r":(n+1)*5+"%", "style":"stroke: black; stroke-width:1px; fill:none;"};
 		ring=setAttributesNS(document.createElementNS("http://www.w3.org/2000/svg", "circle"), ringAttrs);
 		svg.appendChild(ring);
 		for (d=0; d<e.shells[n]; d++){ // The Electron loop
 			angle=d/e.shells[n]*2*Math.PI;
-			elecAttrs={"cx":w/2+Math.sin(angle)*(n+1)*25, "cy":h/2-Math.cos(angle)*(n+1)*25, "r":"5", "style":"fill: black;"};
+			//elecAttrs={"cx":w/2+Math.sin(angle)*(n+1)*25, "cy":h/2-Math.cos(angle)*(n+1)*25, "r":"5", "style":"fill: black;"};
+			elecAttrs={"cx":(50+Math.sin(angle)*(n+1)*5)+"%", "cy":(50-Math.cos(angle)*(n+1)*5)+"%", "r":"1%", "style":"fill: black;"};
 			elec=setAttributesNS(document.createElementNS("http://www.w3.org/2000/svg", "circle"), elecAttrs);
 			svg.appendChild(elec);
 		}
@@ -75,7 +76,6 @@ function viewElement(e){ // Using ths function costs you $11.99 (The price of a 
 	for (x=0; x<document.getElementsByClassName("view").length; x++){
 		elem=document.getElementsByClassName("view")[x];
 		elem.innerHTML=e[elem.id.split("_")[1]];
-		console.log(e[elem.id.split("_")[1]])
 	}
 	// 100% jank method of listing ions with the common ones in blue
 	ions=document.getElementById("view_ions");
