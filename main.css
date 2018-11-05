@@ -31,9 +31,4 @@ text{user-select:none; cursor:default;}
 
 .info{cursor:help;}
 #periodicTable td.element{border:1px solid black; cursor:pointer;}
-@media (max-width:1120px){ /* If the periodic table is going to get squished, just put it under the diagram */
-	#tableCont, #infoCont{
-		display:block;
-	}
-}
 /*td{border:1px solid black;}/**/
