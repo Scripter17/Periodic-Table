@@ -7,6 +7,8 @@ a:active{color:red;}
 #main{width:100%; margin-bottom:2em;}
 table{border-collapse:collapse; margin:auto;}
 
+#tableCont, #infoCont{display:block;}
+
 #infoCont td{padding:0; width:50%;}
 #infoCont{min-width:50vw;}
 #info{width:80%; padding:10%;}
