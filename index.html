@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="elements.js"></script>
-<script src="main.js"></script>
-<link rel="stylesheet" href="main.css">
-<title>Periodic Table</title>
-<meta name="description" content="A simple periodic table that shows you a diagram of each element. Made by James Wise.">
-<meta name="author" content="James C. Wise">
-<meta name="keywords" content="periodic table, James, James Wise, interactive, atomic diagram, chemistry, ions, ionic charges, atomic mass">
+	<link rel="icon" type="image/ico" href="/Icon.ico">
+	<script src="elements.js"></script>
+	<script src="main.js"></script>
+	<link rel="stylesheet" href="main.css">
+	<title>Periodic Table</title>
+	<meta name="description" content="A simple periodic table that shows you a diagram of each element. Made by James Wise.">
+	<meta name="author" content="James C. Wise">
+	<meta name="keywords" content="periodic table, James, James Wise, interactive, atomic diagram, chemistry, ions, ionic charges, atomic mass">
 </head>
 <body>
-<table id="main">
-	<tr>
-		<td id="infoCont">
-			<table id="info">
-				<tr>
-					<td colspan="2" id="diagramCont">
-						<svg id="diagram" width="400" height="400" xmlns="http://www.w3.org/2000/svg"></svg>
-					</td>
-				</tr>
-				<tr>
-					<td>Atomic Number: <span class="view" id="view_number"></span></td>
-					<td>Mass: <span class="view" id="view_mass"></span></td>
-				</tr>
-				<tr>
-					<td>Symbol: <span class="view" id="view_symbol"></span></td>
-					<td>Name: <span class="view" id="view_name"></span></td>
-				</tr>
-				<tr>
-					<td>Shells: <span class="view" id="view_shells"></span></td>
-					<td><span class="info" title="Common ions are shown in blue">Ions</span>: <span id="view_ions"></span></td>
-				</tr>
-				<tr>
-					<td>Melting point (K): <span class="view" id="view_melt"></span></td>
-					<td>Boiling point (K): <span class="view" id="view_boil"></span></td>
-				</tr>
-			</table>
-		</td>
-		<td id="pTableCont"></td>
-	</tr>
-</table>
+	<table id="main">
+		<tr>
+			<td id="infoCont">
+				<table id="info">
+					<tr>
+						<td colspan="2" id="diagramCont">
+							<svg id="diagram" width="400" height="400" xmlns="http://www.w3.org/2000/svg"></svg>
+						</td>
+					</tr>
+					<tr>
+						<td>Atomic Number: <span class="view" id="view_number"></span></td>
+						<td>Mass: <span class="view" id="view_mass"></span></td>
+					</tr>
+					<tr>
+						<td>Symbol: <span class="view" id="view_symbol"></span></td>
+						<td>Name: <span class="view" id="view_name"></span></td>
+					</tr>
+					<tr>
+						<td>Shells: <span class="view" id="view_shells"></span></td>
+						<td><span class="info" title="Common ions are shown in blue">Ions</span>: <span id="view_ions"></span></td>
+					</tr>
+					<tr>
+						<td>Melting point (K): <span class="view" id="view_melt"></span></td>
+						<td>Boiling point (K): <span class="view" id="view_boil"></span></td>
+					</tr>
+				</table>
+			</td>
+			<td id="pTableCont"></td>
+		</tr>
+	</table>
 </body>
 </html>
