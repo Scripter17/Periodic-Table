@@ -1,4 +1,4 @@
-body{font-family:Consolas;}
+body{font-family:Consolas; padding-bottom:2em;}
 
 a{text-decoration:none; color:blue;}
 a:hover{text-decoration:underline;}
@@ -9,20 +9,13 @@ table{border-collapse:collapse; margin:auto;}
 
 #pTableCont, #infoCont{display:block;}
 
-#infoCont td{padding:0; width:50%;}
-#infoCont{min-width:50vw;}
 #info{width:80%; padding:10%;}
 #info tr:first-child{text-align:center;}
+#info td{width:50%;}
 text{user-select:none; cursor:default;}
 
 #diagramCont{border:1px solid black;}
 #diagram{margin:auto;}
-#author{
-	position:relative;
-	bottom:0;
-	width:100%;
-	text-align:center;
-}
 #periodicTable td{
 	width:2em;
 	height:2em;
@@ -30,6 +23,12 @@ text{user-select:none; cursor:default;}
 	text-align:center;
 	user-select:none;
 }
+
+#periodicTable > tr:nth-child(7) > td:nth-child(3){border-right:2px solid orange;}
+#periodicTable > tr:nth-child(8) > td:nth-child(3){border-right:2px solid blue;}
+
+#periodicTable > tr:nth-child(10) > td:nth-child(4){border-left:2px solid orange;}
+#periodicTable > tr:nth-child(11) > td:nth-child(4){border-left:2px solid blue;}
 
 .info{cursor:help;}
 #periodicTable td.element{border:1px solid black; cursor:pointer;}

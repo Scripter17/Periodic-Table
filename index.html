@@ -11,35 +11,32 @@
 	<meta name="keywords" content="periodic table, James, James Wise, interactive, atomic diagram, chemistry, ions, ionic charges, atomic mass">
 </head>
 <body>
-	<table id="main">
+	<table id="info">
 		<tr>
-			<td id="infoCont">
-				<table id="info">
-					<tr>
-						<td colspan="2" id="diagramCont">
-							<svg id="diagram" width="400" height="400" xmlns="http://www.w3.org/2000/svg"></svg>
-						</td>
-					</tr>
-					<tr>
-						<td>Atomic Number: <span class="view" id="view_number"></span></td>
-						<td>Mass: <span class="view" id="view_mass"></span></td>
-					</tr>
-					<tr>
-						<td>Symbol: <span class="view" id="view_symbol"></span></td>
-						<td>Name: <span class="view" id="view_name"></span></td>
-					</tr>
-					<tr>
-						<td>Shells: <span class="view" id="view_shells"></span></td>
-						<td><span class="info" title="Common ions are shown in blue">Ions</span>: <span id="view_ions"></span></td>
-					</tr>
-					<tr>
-						<td>Melting point (K): <span class="view" id="view_melt"></span></td>
-						<td>Boiling point (K): <span class="view" id="view_boil"></span></td>
-					</tr>
-				</table>
+			<td colspan="2" id="diagramCont">
+				<!--Yes, the diagram itself is in fact a square.
+					CSS needs 2 extra percentage units: %W and %H, for percent of width and height,
+					because then, this hack wouldn't be needed.-->
+				<svg id="diagram" width="340" height="340" xmlns="http://www.w3.org/2000/svg"></svg>
 			</td>
-			<td id="pTableCont"></td>
+		</tr>
+		<tr>
+			<td>Atomic Number: <span class="view" id="view_number"></span></td>
+			<td>Mass: <span class="view" id="view_mass"></span></td>
+		</tr>
+		<tr>
+			<td>Symbol: <span class="view" id="view_symbol"></span></td>
+			<td>Name: <span class="view" id="view_name"></span></td>
+		</tr>
+		<tr>
+			<td>Shells: <span class="view" id="view_shells"></span></td>
+			<td><span class="info" title="Common ions are shown in blue">Ions</span>: <span id="view_ions"></span></td>
+		</tr>
+		<tr>
+			<td>Melting point (K): <span class="view" id="view_melt"></span></td>
+			<td>Boiling point (K): <span class="view" id="view_boil"></span></td>
 		</tr>
 	</table>
+	<table id="periodicTable"></table>
 </body>
 </html>
